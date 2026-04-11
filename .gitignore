@@ -1,0 +1,10 @@
+# Keep local secrets out of Git
+.env
+
+# Common OS/editor noise
+.DS_Store
+.vscode
+
+# Runtime leftovers
+data/
+logs/
