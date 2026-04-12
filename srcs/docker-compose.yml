@@ -1,1 +1,20 @@
+services:
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    image: mariadb #TODO:check why other have more stuff here
+    restart: always
+    env_file: 
+      - .env
+    networks:
+      - inception
+    volumes:
+      - mariadb:/var/lib/mysql
 
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${LOGIN}/data/mariadb
