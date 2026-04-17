@@ -9,6 +9,8 @@ RUN apk update && \
     php83-mbstring \
     mariadb-client \
     curl
+    
+RUN echo "memory_limit = 512M" > /etc/php83/conf.d/99-custom.ini
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
     chmod +x wp-cli.phar && \
