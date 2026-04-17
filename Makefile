@@ -1,28 +1,43 @@
-COMPOSE ?= docker-compose
-COMPOSE_FILE := -f srcs/docker-compose.yml
-DC := $(COMPOSE) $(COMPOSE_FILE)
+LOGIN 			= wweerasi
+DATA_PATH 		= /home/$(LOGIN)/data
+MARIADB_DIR 	= $(DATA_PATH)/mariadb
+WORDPRESS_DIR 	= $(DATA_PATH)/wordpress
 
-.PHONY: build up down logs ps clean fclean re
+COMPOSE 		= docker compose -f ./srcs/docker-compose.yml
 
-build:
-	$(DC) build mariadb
+GREEN 			= \033[1;32m
+RED 			= \033[1;31m
+BLUE 			= \033[1;34m
+RESET 			= \033[0m
 
-up:
-	$(DC) up -d mariadb
+all: build up
+
+dirs:
+	@echo "$(BLUE)==> Creating host data directories...$(RESET)"
+	@mkdir -p $(MARIADB_DIR)
+	@mkdir -p $(WORDPRESS_DIR)
+
+build: dirs
+	@echo "$(BLUE)==> Building Docker images...$(RESET)"
+	@$(COMPOSE) build
+
+up: dirs
+	@echo "$(GREEN)==> Starting infrastructure...$(RESET)"
+	@$(COMPOSE) up -d
 
 down:
-	$(DC) down
-
-logs:
-	$(DC) logs -f --tail=100 mariadb
-
-ps:
-	$(DC) ps
+	@echo "$(RED)==> Stopping infrastructure...$(RESET)"
+	@$(COMPOSE) down
 
 clean:
-	$(DC) down
+	@echo "$(RED)==> Cleaning containers and networks...$(RESET)"
+	@$(COMPOSE) down --rmi all -v
 
-fclean:
-	$(DC) down -v --rmi local
+fclean: clean
+	@echo "$(RED)==> Destroying permanent data and wiping Docker cache...$(RESET)"
+	@sudo rm -rf $(DATA_PATH)
+	@docker system prune -af --volumes
 
-re: fclean build up
+re: fclean all
+
+.PHONY: all dirs build up down clean fclean re
