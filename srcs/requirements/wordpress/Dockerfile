@@ -7,7 +7,6 @@ RUN apk update && \
     php83-mysqli \
     php83-phar \
     php83-mbstring \
-    mariadb-client \
     curl
     
 RUN echo "memory_limit = 512M" > /etc/php83/conf.d/99-custom.ini

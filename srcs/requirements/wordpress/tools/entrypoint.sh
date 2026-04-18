@@ -1,12 +1,5 @@
 #!/bin/sh
 
-echo "==> Waiting for MariaDB to wake up..."
-
-while ! mariadb -h mariadb -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SELECT 1;" >/dev/null 2>&1; do
-    sleep 2
-done
-echo "==> MariaDB is awake and ready!"
-
 if [ ! -f /var/www/html/wp-config.php ]; then
     echo "==> wp-config.php not found. Downloading and configuring WordPress..."
     
