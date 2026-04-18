@@ -20,7 +20,6 @@ GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO \`${MYSQL_USER}\`@'%';
 FLUSH PRIVILEGES;
 EOF
 
-#TODO: see if you have to change the variable names in the above commands.
     echo "==> Database initialization complete!"
 else
     echo "==> MariaDB database already exists. Skipping initialization."

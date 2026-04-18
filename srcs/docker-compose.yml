@@ -10,14 +10,12 @@ services:
       test: ["CMD-SHELL", "mariadb-admin ping -h localhost -u root -p$${MYSQL_ROOT_PASSWORD} || exit 1"]
       interval: 10s
       timeout: 5s
-      retries: 5
-      start_period: 30s
+      retries: 10
+      start_period: 60s
     networks:
       - inception
     volumes:
       - mariadb:/var/lib/mysql
-
-#TODO: check why other have more stuff for image.
 
   nginx:
     container_name: nginx
