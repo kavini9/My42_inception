@@ -7,7 +7,7 @@ services:
     env_file: 
       - .env
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD} || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 10
