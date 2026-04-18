@@ -21,7 +21,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 
     echo "==> Installing WordPress base..."
     wp core install \
-        --url=$DOMAIN_NAME \
+        --url=https://$DOMAIN_NAME \
         --title="$WP_TITLE" \
         --admin_user=$WP_ADMIN \
         --admin_password=$WP_ADMIN_PASSWORD \
