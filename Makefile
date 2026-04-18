@@ -13,28 +13,28 @@ RESET 			= \033[0m
 all: build up
 
 dirs:
-	@echo "$(BLUE)==> Creating host data directories...$(RESET)"
+	@printf "$(BLUE)==> Creating host data directories...$(RESET)\n"
 	@mkdir -p $(MARIADB_DIR)
 	@mkdir -p $(WORDPRESS_DIR)
 
 build: dirs
-	@echo "$(BLUE)==> Building Docker images...$(RESET)"
+	@printf "$(BLUE)==> Building Docker images...$(RESET)\n"
 	@$(COMPOSE) build
 
 up: dirs
-	@echo "$(GREEN)==> Starting infrastructure...$(RESET)"
+	@printf "$(GREEN)==> Starting infrastructure...$(RESET)\n"
 	@$(COMPOSE) up -d
 
 down:
-	@echo "$(RED)==> Stopping infrastructure...$(RESET)"
+	@printf "$(RED)==> Stopping infrastructure...$(RESET)\n"
 	@$(COMPOSE) down
 
 clean:
-	@echo "$(RED)==> Cleaning containers and networks...$(RESET)"
+	@printf "$(RED)==> Cleaning containers and networks...$(RESET)\n"
 	@$(COMPOSE) down --rmi all -v
 
 fclean: clean
-	@echo "$(RED)==> Destroying permanent data and wiping Docker cache...$(RESET)"
+	@printf "$(RED)==> Destroying permanent data and wiping Docker cache...$(RESET)\n"
 	@sudo rm -rf $(DATA_PATH)
 	@docker system prune -af --volumes
 
