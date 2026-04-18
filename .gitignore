@@ -7,3 +7,4 @@ srcs/.env
 
 # Runtime leftovers
 data/
+logs/
