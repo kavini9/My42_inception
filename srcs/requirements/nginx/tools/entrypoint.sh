@@ -13,6 +13,9 @@ else
     echo "==> SSL certificate already exists. Skipping generation."
 fi
 
+echo "==> Injecting domain name into NGINX configuration..."
+sed -i "s/DOMAIN_NAME_PLACEHOLDER/$DOMAIN_NAME/g" /etc/nginx/nginx.conf
+
 echo "==> Starting NGINX in the foreground..."
 
 exec nginx -g "daemon off;"
