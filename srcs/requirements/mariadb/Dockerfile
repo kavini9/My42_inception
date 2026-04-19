@@ -1,6 +1,5 @@
 FROM alpine:3.21.0
 
-#TODO: probably can get rid of tzdata later on, but for now it is needed to set the timezone in the container to match the host timezone
 RUN apk update && \
     apk add --no-cache mariadb mariadb-client tzdata
 
