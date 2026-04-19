@@ -40,9 +40,6 @@ Once the containers are running and healthy, you can access the application thro
 ## 5. Checking that Services are Running Correctly
 If you need to verify the health of the system or troubleshoot issues, use the following commands:
 
-## 5. Checking that Services are Running Correctly
-If you need to verify the health of the system or troubleshoot issues, use the following commands:
-
 **Check Container Status:**
 ```bash
 docker ps
