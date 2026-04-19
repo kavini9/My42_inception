@@ -70,6 +70,7 @@ docker exec -it nginx ps aux
 ### Network & Volumes
 **Inspect Network and Volumes:**
 ```bash
+docker network ls
 docker network inspect inception
 docker volume ls
 docker volume inspect mariadb
