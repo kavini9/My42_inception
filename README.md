@@ -44,3 +44,4 @@ Artificial Intelligence (LLMs) was used as an interactive tutor and pair-program
 2. Formulate and optimize the `sed` commands used in configuration scripts.
 3. Understand and implement strict Docker Compose `healthcheck` and `depends_on` rules to prevent race conditions (e.g., ensuring MariaDB is fully initialized before WordPress boots, avoiding NGINX 403 errors).
 4. Refactor standard `echo` statements to POSIX-compliant `printf` statements in the Makefile to fix SSH terminal color rendering.
+5. Documentation.
